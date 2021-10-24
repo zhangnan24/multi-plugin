@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
-  "author": "derik.zhang <derik.zhang@shopee.com>",
+  "author": "zhangnan",
   "license": "MIT",
   "main": "lib/multi-region.js",
   "directories": {
@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://npm.shopee.io/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
