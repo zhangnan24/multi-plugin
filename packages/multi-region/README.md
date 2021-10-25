@@ -18,9 +18,23 @@
 
 ## 工作原理
 
-核心机制是利用 webpack 中，resolve -- extensions 的有序性。
+核心机制是利用 webpack 中，resolve --> extensions 的有序性，有序性的含义是，当同一个文件夹下存在多个文件时，高优先级的文件会被优先加载，一旦寻找到了高优先级的文件，就不会继续寻找。
+
+这个插件做的事情是这样的，举例来说，webpack - resolve - extensions的改造如下（以region为us为例）：
+
+```diff
+- [.jsx, .js, .vue, .tsx]
++ [.us.jsx, .jsx, .us.js, .js, .us.vue, .vue, .us.tsx, .tsx]
+```
 
 ## 使用
+
+### region名称注入
+
+在插件中会根据传入的region名字，去process.env中寻找，比如：传入`{ regionVariable: "APP_REGION" }`，那么这意味着两点：
+
+- 在开发环境中，你需要通过一些手段定义`process.env.APP_REGION`，你可以通过`cross-env`或者其他插件做到；（下面会给出vue和react脚手架中的配置）
+- 在生产环境中，你同样需要通过一些手段定义`process.env.APP_REGION`，并且将`region`的值注入进来（比如通过Dockerfile等，因团队而异）。
 
 ### 基于@vue/cli 创建的项目进行配置
 
@@ -46,12 +60,13 @@ module.exports = {
 },
 ```
 
-在文件引用的时候，只需要引用到目录层级即可，无需引用到具体某个文件。
+在文件引用的时候，**只需要引用到目录层级即可，无需引用到具体某个文件**。
 
 如在 router 配置中：
 
-```js
-import Home from "../views/Home";
+```diff
+- import Home from "../views/Home.vue"
++ import Home from "../views/Home";
 ```
 
 终端运行`npm run serve:us`，即可支持`.us.vue`、`.us.js`、`.us.ts`等一系列文件类型
@@ -78,7 +93,7 @@ module.exports = {
 "scripts": {
 -    "start": "react-scripts start",
 +    "start": "craco start",
-+   "start:us": "APP_REGION=us craco start",
++    "start:us": "APP_REGION=us craco start",
 },
 ```
 
