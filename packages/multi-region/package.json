@@ -1,8 +1,10 @@
 {
   "name": "multi-region",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "多国家适配插件，以做美国的差异化为例，index.us.tsx > index.tsx，index.us.vue > index.vue",
-  "keywords": ["multi-region"],
+  "keywords": [
+    "multi-region"
+  ],
   "author": "zhangnan",
   "license": "MIT",
   "main": "lib/multi-region.js",
