@@ -53,7 +53,7 @@
 - 在开发环境中，你需要通过一些手段定义`process.env.APP_REGION`，你可以通过`cross-env`或者其他插件做到；（下面会给出vue和react脚手架中的配置）
 - 在生产环境中，你同样需要通过一些手段定义`process.env.APP_REGION`，并且将`region`的值注入进来（比如通过Dockerfile等，因团队而异）。
 
-当然，你也可以叫任意其他的名字，比如传入：`{ regionVariable: "MY_REGION" }` / `{ regionVariable: "MY_COUNTRY" }`等等都可以，只要和`package.json`以及部署时的环境变量名保持一致即可。
+当然，你也可以叫任意其他的名字，比如传入：`{ regionVariable: "MY_REGION" }`，`{ regionVariable: "MY_COUNTRY" }`等等都可以，只要和`package.json`以及部署时的环境变量名保持一致即可。
 
 ### 基于@vue/cli 创建的项目进行配置
 
